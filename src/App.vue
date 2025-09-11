@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import VueDraggable from './components/VueDraggable.vue'
+import WordList from './components/WordList.vue'
 </script>
 
 <template>
-  <VueDraggable />
+  <WordList />
 </template>
 
 <style scoped>

@@ -1,21 +1,26 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { generate } from 'random-words'
-import Draggable from 'vuedraggable'
+import { ref } from "vue";
+import { generate } from "random-words";
+import Draggable from "vuedraggable";
 
-const words = ref<string[]>(generate({ min: 1, max: 1, exactly: 10000 }) as string[])
+const words = ref<string[]>(generate({ min: 1, max: 1, exactly: 10000 }) as string[]);
 </script>
 
 <template>
-    <div class="word-list">
-      <Draggable v-model="words" item-key="text" ghost-class="dragging" handle=".handle">
-        <template #item="{ element }">
-          <div class="word">
-            <span class="handle">☰</span>
-            <span>{{ element }}</span>
-          </div>
-        </template>
-      </Draggable>
+  <div class="word-list">
+    <Draggable
+      v-model="words"
+      item-key="text"
+      ghost-class="dragging"
+      handle=".handle"
+    >
+      <template #item="{ element }">
+        <div class="word">
+          <span class="handle">☰</span>
+          <span>{{ element }}</span>
+        </div>
+      </template>
+    </Draggable>
   </div>
 </template>
 

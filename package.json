@@ -9,9 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@vueuse/core": "^13.9.0",
     "random-words": "^2.0.1",
     "vue": "^3.5.18",
+    "vue-virtual-scroller": "^2.0.0-beta.8",
     "vuedraggable": "^4.1.0"
   },
   "devDependencies": {

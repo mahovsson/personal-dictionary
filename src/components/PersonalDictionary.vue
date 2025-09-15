@@ -67,7 +67,10 @@ initDictionaryWords();
 </script>
 
 <template>
-  <div class="dictionary__container">
+  <div 
+    class="dictionary__container"
+    data-cy="dictionary__container"
+  >
     <AddWordInput
       @add-word="addWordToDictionary"
       :disabled="isLoading"
@@ -92,6 +95,7 @@ initDictionaryWords();
     <div
       v-else-if="dictionaryWords && dictionaryWords.length > 0"
       class="dictionary__word-list"
+      data-cy="dictionary__word-list"
     >
       <Draggable
         v-model="dictionaryWords"
@@ -100,9 +104,13 @@ initDictionaryWords();
         ghost-class="dictionary__word-list--ghost"
         @start="onDragStart"
         @end="onDragEnd"
+        data-cy="dictionary__word-draggable"
       >
         <template #item="{ element, index }">
-          <div class="dictionary__word-item">
+          <div 
+            class="dictionary__word-item"
+            data-cy="dictionary__word-item"
+          >
             <WordCard
               :word="element"
               :is-editing="editingIndex === index"

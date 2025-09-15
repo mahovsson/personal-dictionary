@@ -63,8 +63,6 @@ describe("WordCard.vue", () => {
   it("emits finish-edit event when text loses focus", async () => {
     await wrapper.setProps({ isEditing: true });
 
-    wordText = wrapper.find("[data-cy='dictionary__word-text']");
-
     await wordText.trigger("blur");
 
     expect(wrapper.emitted("finish-edit")).toBeTruthy();
@@ -73,8 +71,6 @@ describe("WordCard.vue", () => {
 
   it("emits finish-edit event when Enter key is pressed", async () => {
     await wrapper.setProps({ isEditing: true });
-
-    wordText = wrapper.find("[data-cy='dictionary__word-text']");
 
     await wordText.trigger("keydown.enter");
 
@@ -85,8 +81,6 @@ describe("WordCard.vue", () => {
   it("emits cancel-edit event when Escape key is pressed", async () => {
     await wrapper.setProps({ isEditing: true });
 
-    wordText = wrapper.find("[data-cy='dictionary__word-text']");
-
     await wordText.trigger("keydown.escape");
 
     expect(wrapper.emitted("cancel-edit")).toBeTruthy();
@@ -96,9 +90,6 @@ describe("WordCard.vue", () => {
   describe("when editing", () => {
     beforeEach(async () => {
       await wrapper.setProps({ isEditing: true });
-
-      wordText = wrapper.find("[data-cy='dictionary__word-text']");
-      editBtn = wrapper.find("[data-cy='dictionary__word-edit-btn']");
     });
 
     it("makes text contenteditable", () => {

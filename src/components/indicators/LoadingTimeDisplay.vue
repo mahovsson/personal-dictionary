@@ -13,11 +13,15 @@ const emits = defineEmits<Emits>();
 </script>
 
 <template>
-  <div class="dictionary__loading-time">
-    Data loaded in {{ props.loadingTime }}ms
+  <div 
+    class="dictionary__loading-time"
+    data-cy="dictionary__loading-time"
+  >
+    <span data-cy="dictionary__loading-text">Data loaded in {{ props.loadingTime }}ms</span>
     <button
       @click="emits('click-reload')"
       class="dictionary__reload-btn"
+      data-cy="dictionary__reload-btn"
     >
       🔄 Reload
     </button>

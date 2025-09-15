@@ -13,23 +13,38 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-  <div class="dictionary__skeleton-container">
+  <div 
+    class="dictionary__skeleton-container"
+    data-cy="dictionary__skeleton-container"
+  >
     <div
       v-for="n in count"
       :key="n"
       class="dictionary__skeleton-card"
+      data-cy="dictionary__skeleton-card"
     >
       <div
         v-if="showHandle"
         class="dictionary__skeleton-handle"
+        data-cy="dictionary__skeleton-handle"
       ></div>
-      <div class="dictionary__skeleton-text"></div>
+      <div 
+        class="dictionary__skeleton-text"
+        data-cy="dictionary__skeleton-text"
+      ></div>
       <div
         v-if="showActions"
         class="dictionary__skeleton-actions"
+        data-cy="dictionary__skeleton-actions"
       >
-        <div class="dictionary__skeleton-button"></div>
-        <div class="dictionary__skeleton-button"></div>
+        <div 
+          class="dictionary__skeleton-button"
+          data-cy="dictionary__skeleton-button"
+        ></div>
+        <div 
+          class="dictionary__skeleton-button"
+          data-cy="dictionary__skeleton-button"
+        ></div>
       </div>
     </div>
   </div>

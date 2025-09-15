@@ -6,10 +6,17 @@ interface Emits {
 const emits = defineEmits<Emits>();
 </script>
 <template>
-  <div class="dictionary__empty">
-    <p class="dictionary__empty-message">No words yet. Add some words to get started! 📝</p>
+  <div 
+    class="dictionary__empty"
+    data-cy="dictionary__empty"
+  >
+    <p 
+      class="dictionary__empty-message"
+      data-cy="dictionary__empty-message"
+    >No words yet. Add some words to get started! 📝</p>
     <button
       class="dictionary__retry-btn"
+      data-cy="dictionary__retry-btn"
       @click="emits('click-retry')"
     >
       Retry

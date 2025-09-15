@@ -7,11 +7,18 @@ const emits = defineEmits<Emits>();
 </script>
 
 <template>
-  <div class="dictionary__error">
-    <p class="dictionary__error-message">😕 Failed to load words. Please try again.</p>
+  <div 
+    class="dictionary__error"
+    data-cy="dictionary__error"
+  >
+    <p 
+      class="dictionary__error-message"
+      data-cy="dictionary__error-message"
+    >😕 Failed to load words. Please try again.</p>
     <button
       @click="emits('click-retry')"
       class="dictionary__retry-btn"
+      data-cy="dictionary__error-retry-btn"
     >
       Retry
     </button>

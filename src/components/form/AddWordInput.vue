@@ -38,6 +38,7 @@ const submitNewWord = () => {
 <template>
   <form
     class="dictionary__add-word-form"
+    data-cy="dictionary__add-word-form"
     @submit.prevent="submitNewWord"
   >
     <input
@@ -48,12 +49,14 @@ const submitNewWord = () => {
       v-model="newWord"
       :placeholder="placeholderText"
       :disabled="disabled"
+      data-cy="dictionary__add-word-input"
     />
     <button
       class="dictionary__add-word-button"
       :class="{ 'dictionary__add-word-button--disabled': disableButton }"
       type="submit"
       :disabled="disableButton"
+      data-cy="dictionary__add-word-button"
     >
       {{ buttonText }}
     </button>

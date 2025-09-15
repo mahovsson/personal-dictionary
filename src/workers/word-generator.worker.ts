@@ -18,7 +18,6 @@ self.onmessage = function (event: MessageEvent) {
 
       allWords.push(...batchWords);
 
-      // Only send progress updates every 3 batches to reduce overhead
       if (i % 3 === 0 || i === totalBatches - 1) {
         const progress = Math.round(((i + 1) / totalBatches) * 100);
         self.postMessage({

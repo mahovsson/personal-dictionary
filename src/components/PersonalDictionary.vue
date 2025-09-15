@@ -5,11 +5,11 @@ import AddWordInput from "./form/AddWordInput.vue";
 import WordCard from "./cards/WordCard.vue";
 import SkeletonLoader from "./indicators/SkeletonLoader.vue";
 import EmptyMessageDisplay from "./indicators/EmptyMessageDisplay.vue";
+import ErrorMessageDisplay from "./indicators/ErrorMessageDisplay.vue";
+import LoadingTimeDisplay from "./indicators/LoadingTimeDisplay.vue";
 import { useGenerateWords } from "../composables/useGenerateWords";
 import { DEFAULT_WORD_COUNT, LOCAL_STORAGE_KEY } from "../constants";
 import { setItemToLocalStorage } from "../utils/localStorage";
-import ErrorMessageDisplay from "./indicators/ErrorMessageDisplay.vue";
-import LoadingTimeDisplay from "./indicators/LoadingTimeDisplay.vue";
 
 const { isLoading, error, reloadWords, loadWords, loadingTime } = useGenerateWords({
   count: DEFAULT_WORD_COUNT,
@@ -35,6 +35,7 @@ const onDragEnd = () => {
   isDragging.value = false;
   setItemToLocalStorage(LOCAL_STORAGE_KEY, dictionaryWords.value || []);
 };
+
 const onStartEdit = (index: number) => {
   editingIndex.value = index;
 };
@@ -90,18 +91,18 @@ initDictionaryWords();
 
     <div
       v-else-if="dictionaryWords && dictionaryWords.length > 0"
-      class="word-list-container"
+      class="dictionary__word-list"
     >
       <Draggable
         v-model="dictionaryWords"
-        class="word-draggable"
+        class="dictionary__word-draggable"
         handle=".word-card__handle"
         ghost-class="dictionary__word-list--ghost"
         @start="onDragStart"
         @end="onDragEnd"
       >
         <template #item="{ element, index }">
-          <div class="word-item">
+          <div class="dictionary__word-item">
             <WordCard
               :word="element"
               :is-editing="editingIndex === index"
@@ -133,23 +134,23 @@ initDictionaryWords();
   box-sizing: border-box;
 }
 
-.word-list-container {
+.dictionary__word-list {
   width: 100%;
 }
 
-.word-draggable {
+.dictionary__word-draggable {
   position: relative;
   width: 100%;
 }
 
-.word-item {
+.dictionary__word-item {
   width: 100%;
   margin-bottom: 0.5rem;
   background: transparent;
   cursor: grab;
 }
 
-.word-item:active {
+.dictionary__word-item:active {
   cursor: grabbing;
 }
 

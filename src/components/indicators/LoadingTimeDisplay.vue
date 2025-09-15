@@ -13,11 +13,11 @@ const emits = defineEmits<Emits>();
 </script>
 
 <template>
-  <div class="loading-time">
+  <div class="dictionary__loading-time">
     Data loaded in {{ props.loadingTime }}ms
     <button
       @click="emits('click-reload')"
-      class="reload-btn"
+      class="dictionary__reload-btn"
     >
       🔄 Reload
     </button>
@@ -25,7 +25,7 @@ const emits = defineEmits<Emits>();
 </template>
 
 <style scoped>
-.loading-time {
+.dictionary__loading-time {
   font-size: 0.8rem;
   color: #666;
   padding: 0.5rem;
@@ -40,7 +40,7 @@ const emits = defineEmits<Emits>();
   gap: 0.5rem;
 }
 
-.reload-btn {
+.dictionary__reload-btn {
   padding: 0.25rem 0.5rem;
   font-size: 0.7rem;
   border: 1px solid #007bff;
@@ -51,7 +51,7 @@ const emits = defineEmits<Emits>();
   transition: all 0.2s ease;
 }
 
-.reload-btn:hover {
+.dictionary__reload-btn:hover {
   background: #007bff;
   color: white;
 }

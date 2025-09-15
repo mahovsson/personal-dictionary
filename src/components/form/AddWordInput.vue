@@ -37,21 +37,21 @@ const submitNewWord = () => {
 
 <template>
   <form
-    class="add-word__container"
+    class="dictionary__add-word-form"
     @submit.prevent="submitNewWord"
   >
     <input
       ref="inputRef"
-      class="add-word__input"
-      :class="{ 'add-word__input--disabled': disabled }"
+      class="dictionary__add-word-input"
+      :class="{ 'dictionary__add-word-input--disabled': disabled }"
       type="text"
       v-model="newWord"
       :placeholder="placeholderText"
       :disabled="disabled"
     />
     <button
-      class="add-word__button"
-      :class="{ 'add-word__button--disabled': disableButton }"
+      class="dictionary__add-word-button"
+      :class="{ 'dictionary__add-word-button--disabled': disableButton }"
       type="submit"
       :disabled="disableButton"
     >
@@ -61,7 +61,7 @@ const submitNewWord = () => {
 </template>
 
 <style scoped>
-.add-word__container {
+.dictionary__add-word-form {
   display: flex;
   align-items: flex-start;
   margin-bottom: 1.25rem;
@@ -69,7 +69,7 @@ const submitNewWord = () => {
   width: 100%;
 }
 
-.add-word__input {
+.dictionary__add-word-input {
   flex: 1;
   padding: 0.5rem;
   box-sizing: border-box;
@@ -79,13 +79,13 @@ const submitNewWord = () => {
   transition: all 0.2s ease;
 }
 
-.add-word__input--disabled {
+.dictionary__add-word-input--disabled {
   background-color: #f8f9fa;
   color: #6c757d;
   cursor: not-allowed;
 }
 
-.add-word__button {
+.dictionary__add-word-button {
   flex-shrink: 0;
   padding: 0.5rem 1rem;
   font-size: 1rem;
@@ -97,11 +97,11 @@ const submitNewWord = () => {
   transition: background-color 0.2s ease;
 }
 
-.add-word__button:hover:not(.add-word__button--disabled) {
+.dictionary__add-word-button:hover:not(.dictionary__add-word-button--disabled) {
   background-color: #0056b3;
 }
 
-.add-word__button--disabled {
+.dictionary__add-word-button--disabled {
   background-color: #6c757d;
   cursor: not-allowed;
 }

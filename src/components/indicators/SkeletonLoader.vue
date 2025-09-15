@@ -13,30 +13,30 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-  <div class="skeleton__container">
+  <div class="dictionary__skeleton-container">
     <div
       v-for="n in count"
       :key="n"
-      class="skeleton__card"
+      class="dictionary__skeleton-card"
     >
       <div
         v-if="showHandle"
-        class="skeleton__handle"
+        class="dictionary__skeleton-handle"
       ></div>
-      <div class="skeleton__text"></div>
+      <div class="dictionary__skeleton-text"></div>
       <div
         v-if="showActions"
-        class="skeleton__actions"
+        class="dictionary__skeleton-actions"
       >
-        <div class="skeleton__button"></div>
-        <div class="skeleton__button"></div>
+        <div class="dictionary__skeleton-button"></div>
+        <div class="dictionary__skeleton-button"></div>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.skeleton__container {
+.dictionary__skeleton-container {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -46,7 +46,7 @@ withDefaults(defineProps<Props>(), {
   margin: 0;
 }
 
-.skeleton__card {
+.dictionary__skeleton-card {
   border: 0.0625rem solid #e0e0e0;
   border-radius: 0.25rem;
   padding: 0.75rem;
@@ -61,7 +61,7 @@ withDefaults(defineProps<Props>(), {
   animation: skeleton__pulse 1.5s ease-in-out infinite;
 }
 
-.skeleton__handle {
+.dictionary__skeleton-handle {
   width: 1.25rem;
   height: 1.25rem;
   background-color: #e0e0e0;
@@ -69,7 +69,7 @@ withDefaults(defineProps<Props>(), {
   animation: skeleton__shimmer 1.5s ease-in-out infinite;
 }
 
-.skeleton__text {
+.dictionary__skeleton-text {
   flex: 1;
   height: 1.25rem;
   margin: 0 1.25rem;
@@ -79,12 +79,12 @@ withDefaults(defineProps<Props>(), {
   animation-delay: 0.2s;
 }
 
-.skeleton__actions {
+.dictionary__skeleton-actions {
   display: flex;
   gap: 0.5rem;
 }
 
-.skeleton__button {
+.dictionary__skeleton-button {
   width: 1.5rem;
   height: 1.5rem;
   background-color: #e0e0e0;
@@ -115,19 +115,19 @@ withDefaults(defineProps<Props>(), {
   }
 }
 
-.skeleton__card:nth-child(2n) {
+.dictionary__skeleton-card:nth-child(2n) {
   animation-delay: 0.1s;
 }
 
-.skeleton__card:nth-child(3n) {
+.dictionary__skeleton-card:nth-child(3n) {
   animation-delay: 0.2s;
 }
 
-.skeleton__card:nth-child(4n) {
+.dictionary__skeleton-card:nth-child(4n) {
   animation-delay: 0.3s;
 }
 
-.skeleton__card:nth-child(5n) {
+.dictionary__skeleton-card:nth-child(5n) {
   animation-delay: 0.4s;
 }
 </style>

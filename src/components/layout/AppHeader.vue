@@ -1,5 +1,10 @@
 <template>
-  <h1 class="header">Personal dictionary 📔</h1>
+  <h1
+    class="header"
+    data-cy="dictionary__title"
+  >
+    Personal dictionary 📔
+  </h1>
 </template>
 
 <style scoped>

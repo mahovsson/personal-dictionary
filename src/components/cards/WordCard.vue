@@ -83,15 +83,16 @@ const onRemoveWord = () => {
 
 <style scoped>
 .word-card__container {
-  border: 0.0625rem solid #ddd;
-  border-radius: 0.25rem;
-  padding: 0.5rem;
-  margin: 0.5rem;
+  border: 0.0625rem solid #555;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  margin: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: calc(50% - 1rem);
+  width: 100%;
   box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.05);
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
@@ -99,7 +100,8 @@ const onRemoveWord = () => {
 
 .word-card__container:hover {
   transform: translateY(-0.125rem);
-  box-shadow: 0 0.125rem 0.5rem rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .word-card__handle {

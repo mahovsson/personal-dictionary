@@ -1,24 +1,24 @@
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
 import Draggable from "vuedraggable";
-import AddWordInput from "./AddWordInput.vue";
-import WordCard from "./WordCard.vue";
-import SkeletonLoader from "./SkeletonLoader.vue";
-import EmptyMessage from "./EmptyMessage.vue";
+import AddWordInput from "./form/AddWordInput.vue";
+import WordCard from "./cards/WordCard.vue";
+import SkeletonLoader from "./indicators/SkeletonLoader.vue";
+import EmptyMessageDisplay from "./indicators/EmptyMessageDisplay.vue";
 import { useGenerateWords } from "../composables/useGenerateWords";
 import { DEFAULT_WORD_COUNT, LOCAL_STORAGE_KEY } from "../constants";
 import { setItemToLocalStorage } from "../utils/localStorage";
+import ErrorMessageDisplay from "./indicators/ErrorMessageDisplay.vue";
+import LoadingTimeDisplay from "./indicators/LoadingTimeDisplay.vue";
 
-const { isLoading, error, reloadWords, loadWords } = useGenerateWords({
+const { isLoading, error, reloadWords, loadWords, loadingTime } = useGenerateWords({
   count: DEFAULT_WORD_COUNT,
-  delay: DEFAULT_WORD_COUNT,
 });
 
 const dictionaryWords = ref<string[]>([]);
 
-const dragging = ref(false);
-
 const editingIndex = ref<number | null>(null);
+const isDragging = ref(false);
 
 const addWordToDictionary = (word: string) => {
   if (dictionaryWords.value) {
@@ -28,14 +28,13 @@ const addWordToDictionary = (word: string) => {
 };
 
 const onDragStart = () => {
-  dragging.value = true;
+  isDragging.value = true;
 };
 
 const onDragEnd = () => {
-  dragging.value = false;
+  isDragging.value = false;
   setItemToLocalStorage(LOCAL_STORAGE_KEY, dictionaryWords.value || []);
 };
-
 const onStartEdit = (index: number) => {
   editingIndex.value = index;
 };
@@ -63,7 +62,7 @@ const initDictionaryWords = async () => {
   dictionaryWords.value = (await loadWords()) || [];
 };
 
-onMounted(initDictionaryWords);
+initDictionaryWords();
 </script>
 
 <template>
@@ -73,40 +72,50 @@ onMounted(initDictionaryWords);
       :disabled="isLoading"
     />
 
+    <LoadingTimeDisplay
+      v-if="!isLoading && loadingTime > 0"
+      :loadingTime="loadingTime"
+      @click-reload="reloadWords"
+    />
+
     <SkeletonLoader
       v-if="isLoading"
       :count="DEFAULT_WORD_COUNT"
     />
 
-    <ErrorMessage
+    <ErrorMessageDisplay
       v-else-if="error"
       @click-retry="reloadWords"
     />
 
-    <Draggable
+    <div
       v-else-if="dictionaryWords && dictionaryWords.length > 0"
-      tag="ul"
-      v-model="dictionaryWords"
-      class="dictionary__word-list"
-      handle=".word-card__handle"
-      ghost-class="dictionary__word-list--ghost"
-      @start="onDragStart"
-      @end="onDragEnd"
+      class="word-list-container"
     >
-      <template #item="{ element, index }">
-        <WordCard
-          :key="`${element}-${index}`"
-          :word="element"
-          :is-editing="editingIndex === index"
-          @start-edit="onStartEdit(index)"
-          @finish-edit="newWord => onFinishEdit(index, newWord)"
-          @cancel-edit="onCancelEdit"
-          @remove="onRemove(index)"
-        />
-      </template>
-    </Draggable>
+      <Draggable
+        v-model="dictionaryWords"
+        class="word-draggable"
+        handle=".word-card__handle"
+        ghost-class="dictionary__word-list--ghost"
+        @start="onDragStart"
+        @end="onDragEnd"
+      >
+        <template #item="{ element, index }">
+          <div class="word-item">
+            <WordCard
+              :word="element"
+              :is-editing="editingIndex === index"
+              @start-edit="onStartEdit(index)"
+              @finish-edit="newWord => onFinishEdit(index, newWord)"
+              @cancel-edit="onCancelEdit"
+              @remove="onRemove(index)"
+            />
+          </div>
+        </template>
+      </Draggable>
+    </div>
 
-    <EmptyMessage
+    <EmptyMessageDisplay
       v-else
       @click-retry="reloadWords"
     />
@@ -118,18 +127,35 @@ onMounted(initDictionaryWords);
   max-width: 75rem;
   margin: 0 auto;
   padding: 1.25rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
 }
 
-.dictionary__word-list {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
+.word-list-container {
+  width: 100%;
+}
+
+.word-draggable {
+  position: relative;
+  width: 100%;
+}
+
+.word-item {
+  width: 100%;
+  margin-bottom: 0.5rem;
+  background: transparent;
+  cursor: grab;
+}
+
+.word-item:active {
+  cursor: grabbing;
 }
 
 .dictionary__word-list--ghost {
   opacity: 0.5;
-  transform: rotate(5deg);
+  transform: rotate(2deg);
+  background: #f0f8ff;
 }
 </style>

@@ -38,7 +38,10 @@ withDefaults(defineProps<Props>(), {
 <style scoped>
 .skeleton__container {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  width: 100%;
+  flex: 1;
+  overflow-y: auto;
   padding: 0;
   margin: 0;
 }
@@ -46,12 +49,13 @@ withDefaults(defineProps<Props>(), {
 .skeleton__card {
   border: 0.0625rem solid #e0e0e0;
   border-radius: 0.25rem;
-  padding: 0.5rem;
-  margin: 0.5rem;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: calc(50% - 2rem);
+  width: 100%;
+  height: 75px; /* Match virtual list item height */
   box-sizing: border-box;
   background-color: #f8f9fa59;
   animation: skeleton__pulse 1.5s ease-in-out infinite;

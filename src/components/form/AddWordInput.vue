@@ -63,16 +63,15 @@ const submitNewWord = () => {
 <style scoped>
 .add-word__container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 1.25rem;
   gap: 0.625rem;
+  width: 100%;
 }
 
 .add-word__input {
-  margin-bottom: 1.25rem;
+  flex: 1;
   padding: 0.5rem;
-  width: 80%;
   box-sizing: border-box;
   font-size: 1rem;
   border: 0.0625rem solid #ccc;
@@ -87,7 +86,7 @@ const submitNewWord = () => {
 }
 
 .add-word__button {
-  align-self: self-start;
+  flex-shrink: 0;
   padding: 0.5rem 1rem;
   font-size: 1rem;
   border: none;

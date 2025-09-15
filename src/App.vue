@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import MainHeader from "./components/MainHeader.vue";
+import AppHeader from "./components/layout/AppHeader.vue";
 import PersonalDictionary from "./components/PersonalDictionary.vue";
 </script>
 
 <template>
-  <MainHeader />
+  <AppHeader />
   <PersonalDictionary />
 </template>

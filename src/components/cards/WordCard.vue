@@ -49,8 +49,14 @@ const onRemoveWord = () => {
 </script>
 
 <template>
-  <li class="word-card__container">
-    <i class="word-card__handle">☰</i>
+  <li 
+    class="word-card__container"
+    data-cy="dictionary__word-card"
+  >
+    <i 
+      class="word-card__handle"
+      data-cy="dictionary__word-handle"
+    >☰</i>
     <span
       ref="textRef"
       class="word-card__text"
@@ -59,21 +65,27 @@ const onRemoveWord = () => {
       @blur="onFinishEditing"
       @keydown.enter="onFinishEditing"
       @keydown.escape="onCancelEditing"
+      data-cy="dictionary__word-text"
     >
       {{ props.word }}
     </span>
-    <div class="word-card__actions">
+    <div 
+      class="word-card__actions"
+      data-cy="dictionary__word-actions"
+    >
       <button
         @click="onStartEditing"
         :disabled="props.isEditing"
         class="word-card__button word-card__button--edit"
         :class="{ 'word-card__button--disabled': props.isEditing }"
+        data-cy="dictionary__word-edit-btn"
       >
         ✏️
       </button>
       <button
         @click="onRemoveWord"
         class="word-card__button word-card__button--remove"
+        data-cy="dictionary__word-remove-btn"
       >
         ❌
       </button>

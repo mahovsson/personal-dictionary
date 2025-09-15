@@ -18,6 +18,7 @@ Vue application for managing your personal word collection with drag-and-drop fu
 - **Vite** - Fast build tool and dev server
 - **VueDraggable** - Drag and drop functionality
 - **Vitest** - Unit testing
+- **Cypress** - for 
 - **VueUse** - Collection of essential Vue utilities
 - **Web Workers** - Background processing for performance
 - **CSS3** - Modern styling with Grid and Flexbox

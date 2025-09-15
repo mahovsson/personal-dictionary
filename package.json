@@ -12,7 +12,9 @@
     "generate-10k": "node scripts/generate-10k-words.js",
     "test": "vitest --reporter=verbose --environment=jsdom --globals",
     "test:ui": "vitest --ui --environment=jsdom --globals",
-    "test:coverage": "vitest --coverage --environment=jsdom --globals"
+    "test:coverage": "vitest --coverage --environment=jsdom --globals",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
   },
   "dependencies": {
     "random-words": "^2.0.1",
@@ -25,6 +27,7 @@
     "@vitejs/plugin-vue": "^6.0.1",
     "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "^0.7.0",
+    "cypress": "^15.2.0",
     "eslint": "^9.35.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-vue": "^10.4.0",

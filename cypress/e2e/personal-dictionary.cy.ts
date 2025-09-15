@@ -9,10 +9,10 @@ describe("Personal Dictionary - Simple Walkthrough", () => {
     cy.visit("/");
     cy.waitForDictionary();
 
-    const newWord = "cypress-" + Date.now();
+    const newWord = "wolf";
     cy.addWord(newWord);
 
-    const editedWord = "edited-" + Date.now();
+    const editedWord = "wolwerine";
     cy.editFirstWord(editedWord);
 
     cy.deleteFirstWord();
